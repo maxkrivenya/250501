@@ -1,0 +1,25 @@
+binary code
+
+	int k = 0, pow = 0;
+	printf("input k ");
+	scanf_s("%d", &k);
+	while (powf(2, pow) < k)
+		pow++;
+	pow--;
+	for (pow; pow >= 0; pow--)
+		if ((k - powf(2, pow)) >= 0)
+		{
+			k -= powf(2, pow);
+			printf("1");
+		}
+		else printf("0");
+
+	int bin, nonbin = 0;
+	printf("\nInput bin ");
+	scanf_s("%d", &bin);
+	for (int cycle = 0; bin >= 1; cycle++)
+	{
+		if ((bin % 10) != 0) nonbin += powf(2, cycle);
+		bin /= 10;
+	}
+	printf("%d", nonbin);

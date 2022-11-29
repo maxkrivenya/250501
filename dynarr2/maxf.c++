@@ -1,12 +1,13 @@
 #include<stdio.h>
 #include<stdlib.h>
 	//Memory allocation
-	int** memalloc(int** p, int l)
+/*	int** memalloc(int** p, int l)
 	{
 		p = (int**)calloc(l * l, sizeof(int**));
 		for (int i = 0; i < l; i++) p[i] = (int*)calloc(l, sizeof(int));
 		return(p);
 	}
+	*/
 	//Memory allocation
 
 

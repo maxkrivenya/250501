@@ -1,0 +1,5 @@
+﻿lab4.obj : error LNK2019: unresolved external symbol "int * * __cdecl memalloc(int * *,int)" (?memalloc@@YAPEAPEAHPEAPEAHH@Z) referenced in function main
+lab4.obj : error LNK2019: unresolved external symbol "void __cdecl arrscan(int * *,int)" (?arrscan@@YAXPEAPEAHH@Z) referenced in function main
+lab4.obj : error LNK2019: unresolved external symbol "void __cdecl arrprint(int * *,int)" (?arrprint@@YAXPEAPEAHH@Z) referenced in function main
+lab4.obj : error LNK2019: unresolved external symbol "void __cdecl latinf(int * *,int)" (?latinf@@YAXPEAPEAHH@Z) referenced in function main
+E:\github\250501\pc lab4\lab4\x64\Debug\lab4.exe : fatal error LNK1120: 4 unresolved externals

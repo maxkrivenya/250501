@@ -1,73 +1,66 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
+#include "char2.h"
 
-int var(int c)
+int var(int d)
 {
     printf("Input char value ");
-    scanf_s("%d", &c);
-    printf("c = %d \n", c);
-    return c;
+    scanf_s("%d", &d);
+    printf("c = %d \n", d);
+    return d;
 }
 
+char** char2fill(char** p, int a) {
+    p = (char**)malloc(a * sizeof(char*));
+    for (int i = 0; i < a; i++)
+    {
+        p[i] = (char*)calloc(100, sizeof(char));
+        printf("Input %d string ", i);
+        fgets(p[i], 99, stdin);
+    }
+    return p;
+}
 
-void strtoword(char** p, int a, int i)
+char** char2adjust(char** p, int a) {
+    for (int i = 0; i < a; i++)
+    {
+        int x = strlen(p[i]);
+        printf("%d ", x);
+        p[i] = (char*)realloc(p[i], x * sizeof(char));
+        p[i][x - 1] = '\0';
+        puts(p[i]);
+    }
+    return p;
+}
+
+char** strtoword(char** p, int a, int* A, int i)
 {
-    int beg = 0, end = 0, j = strlen(p[i]) - 2;
+    int beg = 0, end = 0, j = strlen(p[i]) - 1;
 
     while (j > 0) {
         while (!isalpha(p[i][j]))
             j--;
         end = j; beg = j;
 
-        for (j, beg; beg > 0 && isalpha(p[i][j - 1]); j--, beg--);
-
-        a++;
-        p = (char**)realloc(p, a);
-        p[a - 1] = (char*)calloc(end - beg + 2, sizeof(char));
-        for (int k = 0, l = j; k < end - beg + 1; k++, l++)
-            p[a - 1][k] = p[i][l];
-
+        for (j; j > 0 && isalpha(p[i][j - 1]); j--);
+        beg = j;
+        if (beg > 0) {
+            a++;
+            p = (char**)realloc(p, a * sizeof(char*));
+            p[a - 1] = (char*)calloc(end - beg + 2, sizeof(char));
+            for (int k = 0; k < end - beg + 1; k++)
+                p[a - 1][k] = p[i][beg + k];
+            p[a - 1][end - beg + 1] = '\0';
+            p[i][beg] = '\0';
+            //p[i] = (char*)realloc(p[i], (strlen(p[i]) - end + beg + 1)*sizeof(char));
+        }
+        if (beg == 0)
+            i--;
         j--;
     }
-    i--;
+    *A = a;
     if (i >= 0)
-        strtoword(p, a, i);
-
-
-        //int beg = 0, end = 0, space = 0, wordlength = 0;
-        //for (int j = (strlen(p[i]) - 2); j > 0; j--)
-        //{
-        //    beg = p[i][j]; end = p[i][j];
-        //    if (!isalpha(p[i][j]))
-        //    {
-        //        end = j;
-        //        while ((isalpha(p[i][j])) && (j>=0) )
-        //            j--;
-        //        beg = j;
-        //        
-        //    }
-        //    if(beg >= 0)
-        //    {
-        //            wordlength = end - beg;
-        //            a++;
-        //            p = (char**)realloc(p, a);
-        //            p[a - 1] = (char*)malloc((wordlength + 1) * sizeof(char));
-        //            p[a - 1][wordlength] = '\0';
-        //            for (int k = beg, iv = 0; iv < wordlength; k++, iv++)
-        //                p[a - 1][iv] = p[i][k];
-
-        //         //   p[i] = (char*)realloc(p[i], strlen(p[i]) - wordlength - 1);
-        //            p[i][strlen(p[i]) - wordlength - 1] = '\0';
-        //    }
-        //}
-        //i--;
-        //if (i > 0)
-        //    strtoword(p, a, i);
+       p = strtoword(p, a, A, i);
+    return p;
 }
-
-
 
 
 //array of strings sort by size (bubble method)
@@ -86,4 +79,18 @@ void strsort(char** p, int n)
                 strcpy(p[j - 1], holder);
                 free(holder);
             }
+}
+
+void finishup(char** p, int A){
+    for (int i = 0; i < A; i++) {
+        puts(p[i]);
+        free(p[i]);
+    }
+    free(p);
+}
+
+int exitf(int a) {
+    printf("If you wish to proceed, type 0 ");
+    scanf_s("%d", &a);
+    return a;
 }

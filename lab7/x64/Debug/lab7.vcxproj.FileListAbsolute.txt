@@ -1,2 +1,3 @@
 C:\Users\Max\source\repos\char\lab7\x64\Debug\lab7.exe
 E:\github\250501\lab7\x64\Debug\lab7.exe
+D:\github\250501\lab7\x64\Debug\lab7.exe

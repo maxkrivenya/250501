@@ -1,8 +1,8 @@
 #include "char2.h"
-int main()
+int main(int argc, char** p, int a, char** argv)
 {
-    char** p = NULL;   
-    int a = 0;
+    //char** p = NULL;   
+    //int a = 0;
     int* A = &a;
     int again = 0;
     do {

@@ -1,4 +1,4 @@
 ﻿  Source.cpp
-E:\github\250501\lab7\Source.cpp(23,29): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-E:\github\250501\lab7\Source.cpp(34,47): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\github\250501\lab7\Source.cpp(24,29): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\github\250501\lab7\Source.cpp(35,47): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   lab7.vcxproj -> E:\github\250501\lab7\x64\Debug\lab7.exe

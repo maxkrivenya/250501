@@ -11,6 +11,7 @@ char** char2fill(int a) {
     char** p = (char**)malloc(a * sizeof(char*));
     for (int i = 0; i < a; i++)
     {
+        rewind(stdin);
         p[i] = (char*)calloc(100, sizeof(char));
         fgets(p[i], 99, stdin);
     }
@@ -57,7 +58,7 @@ char** strtoword(char** p, int a, int* A, int i)
             j--;
         }
     *A = a;
-    if (i >= 1)
+    if (i >= 0)
        p = strtoword(p, a, A, i);
     return p;
 }

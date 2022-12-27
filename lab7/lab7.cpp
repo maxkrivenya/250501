@@ -12,7 +12,6 @@ int main()
        strsort(p, a);
        finishup(p, a);
        again = exitf(again);
-
     } while (!again);
     return 0;
 }

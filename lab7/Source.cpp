@@ -1,19 +1,17 @@
 #include "char2.h"
 
-int var(int d)
+void var(int* d)
 {
     printf("Input char value ");
-    scanf_s("%d", &d);
-    printf("c = %d \n", d);
-    return d;
+    scanf_s("%d", d);
+    printf("c = %d \n", *d);
 }
 
-char** char2fill(char** p, int a) {
-    p = (char**)malloc(a * sizeof(char*));
+char** char2fill(int a) {
+    char** p = (char**)malloc(a * sizeof(char*));
     for (int i = 0; i < a; i++)
     {
         p[i] = (char*)calloc(100, sizeof(char));
-        printf("Input %d string ", i);
         fgets(p[i], 99, stdin);
     }
     return p;
@@ -59,7 +57,7 @@ char** strtoword(char** p, int a, int* A, int i)
             j--;
         }
     *A = a;
-    if (i >= 0)
+    if (i >= 1)
        p = strtoword(p, a, A, i);
     return p;
 }

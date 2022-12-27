@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-int var(int);
-char** char2fill(char**, int);
+void var(int*);
+char** char2fill(int);
 char** char2adjust(char**, int);
 char** strtoword(char**, int, int*, int);
 void strsort(char**, int);

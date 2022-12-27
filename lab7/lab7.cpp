@@ -1,22 +1,18 @@
 #include "char2.h"
 int main()
 {
-    char** p = NULL;   
-    int a = 0;
-    int* A = &a;
+    int a;
+    char** p = NULL;
     int again = 0;
-
     do {
-        a = var(a);
-        rewind(stdin);
-        p = char2fill(p, a);
-        p = char2adjust(p, a);
+        var(&a);
+       p = char2fill(a);
+       p = char2adjust(p, a);
+       p = strtoword(p, a, &a, a - 1);
+       strsort(p, a);
+       finishup(p, a);
+       again = exitf(again);
 
-        p = strtoword(p, a, A, a - 1);
-        strsort(p, *A);
-        finishup(p, *A);
-
-        again = exitf(again);
     } while (!again);
     return 0;
 }

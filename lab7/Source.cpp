@@ -98,3 +98,21 @@ char** exitf(int* A, char** p, int n) {
     scanf_s("%d", A);
     return p;
 }
+
+
+//void strsort2(char** p, int a, ...) {
+//    char* holder;
+//    int* n = &a;
+//    for (int i = 0; i < n; i++)
+//        for (int j = n - 1; j > i; j--)
+//            if (strlen(p[j - 1]) > strlen(p[j]))
+//            {
+//                holder = (char*)calloc(strlen(p[j]) + 2, sizeof(char));
+//                strcpy(holder, p[j]);
+//                p[j] = (char*)realloc(p[j], strlen(p[j - 1]) + 1);
+//                strcpy(p[j], p[j - 1]);
+//                p[j - 1] = (char*)realloc(p[j - 1], strlen(holder) + 1);
+//                strcpy(p[j - 1], holder);
+//                free(holder);
+//            }
+//}

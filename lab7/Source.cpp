@@ -26,7 +26,7 @@ char** char2adjust(char** p, int a) {
         int x = strlen(p[i]);
         printf("%d ", x);
         p[i] = (char*)realloc(p[i], x * sizeof(char));
-        p[i][x - 1] = '\0';
+        p[i][x-1] = '\0';
         puts(p[i]);
     }
     return p;
@@ -36,7 +36,7 @@ char** strtoword(char** p, int a, int* A, int i)
 {
     int beg = 0, end = 0, j = strlen(p[i]) - 1;
     if (j == 1) i--;
-    else{
+    else {
         while (j > 0) {
 
             while (!isalpha(p[i][j]))
@@ -44,7 +44,18 @@ char** strtoword(char** p, int a, int* A, int i)
             end = j;
             for (j; j > 0 && isalpha(p[i][j - 1]); j--);
             beg = j;
+        }
+    }
+    if (j == 0)
+        i--;
+    else
+        while (j > 0) {
+            while (!isalpha(p[i][j]))
+                j--;
+            end = j; beg = j;
 
+            for (j; j > 0 && isalpha(p[i][j - 1]); j--);
+            beg = j;
             if (beg > 0) {
                 a++;
                 p = (char**)realloc(p, a * sizeof(char*));
@@ -53,14 +64,14 @@ char** strtoword(char** p, int a, int* A, int i)
                     p[a - 1][k] = p[i][beg + k];
                 p[a - 1][end - beg + 1] = '\0';
                 p[i][beg] = '\0';
-                p[i] = (char*)realloc(p[i], (beg + 1)*sizeof(char));
+                p[i] = (char*)realloc(p[i], (beg + 1) * sizeof(char));
             }
             if (beg == 0)
                 i--;
             j--;
         }
-        *A = a;
-    }
+    *A = a;
+
     if (i >= 0)
        p = strtoword(p, a, A, i);
     return p;

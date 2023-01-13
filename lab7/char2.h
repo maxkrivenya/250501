@@ -10,3 +10,4 @@ char** strtoword(char**, int, int*, int);
 void strsort(char**, int);
 void finishup(char**, int);
 int exitf(int);
+void strsortf(char**, int, ...);

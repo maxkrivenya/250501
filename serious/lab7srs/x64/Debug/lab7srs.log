@@ -1,0 +1,3 @@
+﻿  Source.cpp
+E:\github\250501\serious\lab7srs\Source.cpp(41,47): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  lab7srs.vcxproj -> E:\github\250501\serious\lab7srs\x64\Debug\lab7srs.exe

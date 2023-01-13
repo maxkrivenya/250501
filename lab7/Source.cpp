@@ -30,39 +30,6 @@ char** char2adjust(char** p, int a) {
     return p;
 }
 
-char** strtoword(char** p, int a, int* A, int i)
- {
-    int beg = 0, end = 0, j = strlen(p[i]) - 1;
-    if (j == 0)
-        i--;
-    else
-        while (j > 0) {
-            while (!isalpha(p[i][j]))
-                j--;
-            end = j; beg = j;
-
-            for (j; j > 0 && isalpha(p[i][j - 1]); j--);
-            beg = j;
-            if (beg > 0) {
-                a++;
-                p = (char**)realloc(p, a * sizeof(char*));
-                p[a - 1] = (char*)calloc(end - beg + 2, sizeof(char));
-                for (int k = 0; k < end - beg + 1; k++)
-                    p[a - 1][k] = p[i][beg + k];
-                p[a - 1][end - beg + 1] = '\0';
-                p[i][beg] = '\0';
-                p[i] = (char*)realloc(p[i], (beg + 1)*sizeof(char));
-            }
-            if (beg == 0)
-                i--;
-            j--;
-        }
-    *A = a;
-    if (i >= 0)
-       p = strtoword(p, a, A, i);
-    return p;
-}
-
 
 //array of strings sort by size (bubble method)
 void strsort(char** p, int n)
@@ -95,3 +62,29 @@ int exitf(int a) {
     scanf_s("%d", &a);
     return a;
 }
+
+//void strsortf(char** p, int a, ...) {
+//    int n = 1;
+//    int* size = NULL;
+//    int* poi = &a;
+//    while(*poi) {
+//        printf("%d ", *poi);
+//        n++;
+//        poi++;
+//    }
+//    size = (int*)malloc(n * sizeof(int));
+//    poi = &a;
+//    for (int i = 0; *poi; i++, poi++)
+//        size[i] = *poi;
+//    for (int i = 0; i < n; i++)
+//        printf("\n%d, %d ", size[i], *(poi+i));
+//    for (int i = 0; i < n; i++)
+//        for(int j = n-1; j > i; j--)
+//            if (strlen(p[size[j] - 1]) > strlen(p[size[j]])) {
+//                int temp = size[j];
+//                size[j] = size[j - 1];
+//                size[j - 1] = temp;
+//            }
+//    for (int i = 0; i < n; i++)
+//        puts(p[size[i]]);
+//}

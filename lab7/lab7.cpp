@@ -1,28 +1,24 @@
-#include "char2.h"
-int main(int argc, char** argv)
-{
-    //char** p = (char**)calloc(argc - 1, sizeof(char*));
-    //int* size = (int*)malloc((argc - 1) * sizeof(int));
-    //for (int i = 1; i < argc; i++) {
-    //    p[i - 1] = (char*)calloc(strlen(argv[i]), sizeof(char));
-    //    p[i - 1] = strcpy(p[i - 1], argv[i]);
-    //    p[i - 1][strlen(argv[i])] = '\0';
-    //    printf("%d ", strlen(p[i - 1]));
-    //    puts(p[i - 1]);
-    //}
+struct letters {
+	char a;
+	char b;
+};
+#include <stdio.h>
 
-    int a = argc - 1;
-    char** p = NULL;
-    int again = 0;
-    do {
-        // var(&a);
-        p = char2fill(a);
-        p = char2adjust(p, a);
-        p = strtoword(p, a, &a, a - 1);
-        //strsortf(p, 1, 2, 3);
-        strsort(p, a);
-        finishup(p, a);
-        exitf(&again);
-    } while (!again);
-    return 0;
+int main() {
+	letters poshel[6];
+	poshel[0].a = 'p';
+	poshel[0].b = 'o';
+	poshel[1].a = 's';
+	poshel[1].b = 'h';
+	poshel[2].a = 'e';
+	poshel[2].b = 'l';
+	poshel[3].a = ' ';
+	poshel[3].b = 'n';
+	poshel[4].a = 'a';
+	poshel[4].b = 'h';
+	poshel[5].a = 'u';
+	poshel[5].b = 'i';
+	for (int i = 0; i < 6; i++)
+		printf("%c%c", poshel[i].a, poshel[i].b);
+	return 0;
 }

@@ -1,0 +1,6 @@
+﻿  lab7srs.cpp
+  mystrings.cpp
+  Source.cpp
+D:\github\250501\serious\lab7srs\Source.cpp(44,25): error C2374: 'j': redefinition; multiple initialization
+D:\github\250501\serious\lab7srs\Source.cpp(44): message : see declaration of 'j'
+  Generating Code...

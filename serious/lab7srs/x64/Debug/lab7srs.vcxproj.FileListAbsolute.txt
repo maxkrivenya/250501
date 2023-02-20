@@ -1,0 +1,2 @@
+E:\github\250501\serious\lab7srs\x64\Debug\lab7srs.exe
+D:\github\250501\serious\lab7srs\x64\Debug\lab7srs.exe

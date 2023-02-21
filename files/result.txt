@@ -1,0 +1,7 @@
+num	amt	word
+
+0	10	in
+1	9	he
+2	7	it
+3	7	an
+4	7	no

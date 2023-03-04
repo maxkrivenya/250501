@@ -127,11 +127,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="not_rot.cpp" />
+    <ClCompile Include="print.cpp" />
     <ClCompile Include="rothf.cpp" />
     <ClCompile Include="roth_alg_full.cpp" />
+    <ClCompile Include="roth_base_functions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="roth.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="input.txt" />
+    <Text Include="temp.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

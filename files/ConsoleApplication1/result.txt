@@ -1,0 +1,12 @@
+num	amt	word
+
+0	10	in
+1	9	he
+2	7	it
+3	7	an
+4	7	no
+5	6	to
+6	5	are
+7	5	yet
+8	5	and
+9	5	ten

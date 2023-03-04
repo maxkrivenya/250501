@@ -1,0 +1,7 @@
+beer india 20
+cheese swiss 10
+milk belarus 100
+cheese canada 25
+cream india 5
+beer belarus 1000
+cheese belarus 29

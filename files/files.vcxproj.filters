@@ -24,6 +24,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="text.txt.txt" />
+    <Text Include="user_input.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sem2lab1.h">

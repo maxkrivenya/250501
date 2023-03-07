@@ -59,15 +59,15 @@ void arrprint(temp* a, int n) {
 }
 
 void binprint(temp* a, int n, FILE* fptr) {
-	//for (int i = 0; i < n; i++) {
-	//	for (int j = 0; j < 2; j++) {
-	//		for (int k = 0; k < size; k++)
-	//			fputc(a[i].data[j][k], fptr);
-	//		fputc("\t",fptr);
-	//	}
-	//	fwrite("%d", a[i].amount, 8, 1, fptr);
-	//	fwrite("\n", 1, 1, fptr);
-	//}
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < 2; j++) {
+			for (int k = 0; k < size && isalpha(a[i].data[j][k]); k++)
+				fputc(a[i].data[j][k], fptr);
+			fputc(' ', fptr);
+		}
+		fwrite(&a[i].amount, sizeof(int), 1, fptr);
+		fputc(' ', fptr);
+	}
 }
 
 int part_print(temp* a, int n, const char* b, int mode) {
@@ -150,5 +150,18 @@ temp* fstruct(temp* a, FILE* fptr, int* n){
 		free(str);
 	}
 	*n = z;
+	return a;
+}
+
+temp* bin_read(int n, FILE*fptr) {
+	temp* a = (temp*)calloc(n, sizeof(temp));
+	for (int i = 0; i < n && !feof(fptr); i++) {
+		for (int j = 0; j < 2; j++) {
+			do { a[i].data[j][0] = fgetc(fptr); } while (!isalpha(a[i].data[j][0]));
+			for (int k = 1; k < size; k++)
+				a[i].data[j][k] = fgetc(fptr);
+		}
+	 fscanf_s(fptr, "%d", &a[i].amount);
+	}
 	return a;
 }

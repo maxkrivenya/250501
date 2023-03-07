@@ -21,9 +21,10 @@ char* roth_check(char* a, char* b);
 char* simple_sub(char* a, char* b);
 char* raw_sub(char* a, char* b);
 char* z_remove(char* a, char* b);
+char* z_remove_times(char* _Z_remove, char* _origin, int n);
 char* strcpyy(char* a, char* b);
 char* over(char* a, char* b);
-
+char* dectobin(char*);
 
 char roth_mult(char a, char b);
 char roth_sub(char a, char b);
@@ -31,11 +32,12 @@ char roth_over(char a, char b);
 
 int strcmpp(char* a, char* b);
 int issame(char* a, char* b);
-int Zcount(char* a);
-int numcount(char* a);
+int z_count(char* a);
+int num_count(char* a);
+int y_count(char* a);
 
 void print(char*);
-void roth_step_2(char** L, char** Z, int L_size, int Z_size);
+void roth_step_2(char*** L, char*** Z, int* L_size, int* Z_size);
 void table_print(char*** Cnew, char** c, int C_size, int o);
 void printing(int C_size, int A_size, int* q);
 void begin_print(char** c, int C_size);

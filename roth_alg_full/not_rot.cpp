@@ -83,6 +83,18 @@ char* strcpyy(char* a, char* b) {
 	return a;
 }
 
+//char* dectobin(char* a) {
+//	int x = atoi(a);
+//	char* b = (char*)calloc(size+1, 1);
+//	for (int i = size-1; i >= 0; i--) {
+//		if (x - 2 ^ i > 0) {
+//			x -= 2 ^ i;
+//			b[size-i] = 1;
+//		}
+//	}
+//	return b;
+//}
+
 int strcmpp(char* a, char* b) {
 	int same = 1;
 	for (int i = 0; i < size; i++)

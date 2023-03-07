@@ -3,7 +3,6 @@ int main (){
 	int L_size = 7;	int C_size = 12; int Z_size = 0; int Zi_size = 0;
 	char** c = char2(C_size); char** L = char2(L_size);
 	FILE* fptr = open_read("input.txt");
-
 	for (int i = 0; i < C_size; i++) {
 		for (int j = 0; j < size; j++) {
 			c[i][j] = getc(fptr);
@@ -20,6 +19,12 @@ int main (){
 	Z = merge(Z, Zi, &Z_size, Zi_size);
 	printf("\nThere are % d simple implicants : ", Z_size);	arrprint(Z, Z_size);
 	printf("\nStep one finished.\n");
-	roth_step_2( L, Z, L_size, Z_size);
+	roth_step_2(&L, &Z, &L_size, &Z_size);
+	for (int i = 0; i < L_size; i++)
+		free(L[i]);
+	free(L);
+	for (int i = 0; i < Z_size; i++)
+		free(Z[i]);
+	free(Z);
 	return 0;
 }

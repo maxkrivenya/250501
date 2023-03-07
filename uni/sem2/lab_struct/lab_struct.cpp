@@ -12,8 +12,12 @@ int main() {
 		printf("\nTotal goods amount is %d\n", part_print(a, n, c, mode));
 		prog_end(&cont);
 	} while (!cont);
-	//freopen_s(&fptr, "structs.bin", "w", fptr);
-	//binprint(a, n, fptr);
-	free(a); fclose(fptr);
+	freopen_s(&fptr, "structs.bin", "w", fptr);
+	binprint(a, n, fptr);
+	free(a); 
+	freopen_s(&fptr, "structs.bin", "r", fptr);
+	a = bin_read(n, fptr);
+	arrprint(a, n);
+	fclose(fptr);
 	return 0;
 }

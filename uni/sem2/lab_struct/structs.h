@@ -25,3 +25,4 @@ void binprint(temp* a, int n, FILE* fptr);
 temp* alloc();
 temp* recalloc(temp*, int);
 temp* fstruct(temp* a, FILE* fptr, int* n);
+temp* bin_read(int n, FILE* fptr);

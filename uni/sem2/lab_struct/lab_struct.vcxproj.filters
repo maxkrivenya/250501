@@ -27,6 +27,9 @@
     <None Include="structs.bin">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="output.bin">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="structs.h">
@@ -35,5 +38,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
+    <Text Include="output.txt" />
   </ItemGroup>
 </Project>

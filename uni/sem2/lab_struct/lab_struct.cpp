@@ -1,23 +1,16 @@
 #include "structs.h"
 
 int main() {
-	int cont = 1; int n = 1;
+	int cont = 1; int n = 1; temp* a_new = NULL; int a_new_size = 0;
 	FILE* fptr = file("input.txt", "r"); fileprint(fptr);
 	temp* a = alloc();
 	a = fstruct(a, fptr, &n);
 	do {
-		const char* c = getsf();
-		printf("Please input 0 for the goods or 1 for the country.\t");
-		int mode = getnum();
-		printf("\nTotal goods amount is %d\n", part_print(a, n, c, mode));
-		prog_end(&cont);
+		a_new_size = 0;
+		a_new = labstep1(a, n, &cont, &a_new_size);
 	} while (!cont);
-	freopen_s(&fptr, "structs.bin", "w", fptr);
-	binprint(a, n, fptr);
-	free(a); 
-	freopen_s(&fptr, "structs.bin", "r", fptr);
-	a = bin_read(n, fptr);
-	arrprint(a, n);
-	fclose(fptr);
+	bout(a, "structs.bin", n);
+	free(a_new);
+	//free(a);
 	return 0;
 }

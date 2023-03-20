@@ -105,6 +105,19 @@ char* z_remove_times(char* _temp, char* _origin, int m) {
 	return d;
 }
 
+char** x_sort(char** x, int s) {
+	int j = 0; int max = 0;
+	for (int i = 0; i < s; i++)
+		if (x_count(x[i]) > max) {
+			j = i;
+			max = x_count(x[i]);
+		}
+	for (int i = j - 1; i >= 0; i--)
+		x[i + 1] = x[i];
+	x[0] = strcpyy(x[0], x[j]);
+	return x;
+}
+
 char** roth_step_1(char** c, int C_size, int* Z_size, int e) {
 	char** Z = (char**)calloc(1, sizeof(char*));
 	Z[0] = (char*)calloc(size, 1);
@@ -178,19 +191,6 @@ char** roth_step_1(char** c, int C_size, int* Z_size, int e) {
 	return Z;
 }
 
-char** x_sort(char** x, int s) {
-	int j = 0; int max = 0;
-	for(int i = 0; i < s; i++)
-		if (x_count(x[i]) > max) {
-			j = i;
-			max = x_count(x[i]);
-		}
-	for (int i = j - 1; i >= 0; i--)
-		x[i + 1] = x[i];
-	x[0] = strcpyy(x[0], x[j]);
-	return x;
-}
-
 void roth_step_2(char*** A, char*** B, int* br, int* fr) {
 	printf("\nStarted step two.\n");
 
@@ -205,6 +205,7 @@ void roth_step_2(char*** A, char*** B, int* br, int* fr) {
 	//UNFINISHED
 	char* temp = (char*)calloc(size, 1);
 	for (int i = 0; i < Z_size; i++) {
+		printf("\n"); print(Z[i]);
 		char** row = char2(1);
 		int n = 1;
 		row[0] = strcpyy(row[0], Z[i]);
@@ -228,7 +229,7 @@ void roth_step_2(char*** A, char*** B, int* br, int* fr) {
 					}
 					else {
 						for (int l = 0; l < size; l++)
-								row[k][l] = '\0';
+							row[k][l] = '\0';
 						for (int m = k; m < n - 1; m++)
 							row[m] = strcpyy(row[m], row[m + 1]);
 						n--;
@@ -236,7 +237,9 @@ void roth_step_2(char*** A, char*** B, int* br, int* fr) {
 						if (!n)
 							j = Z_size;
 					}
+					printf(" ("); for (int l = 0; l < n; l++) prin(row[l]); printf(")");
 				}
+				printf("\t");
 			}
 		}
 		rest[i] = char2(n);
@@ -246,6 +249,10 @@ void roth_step_2(char*** A, char*** B, int* br, int* fr) {
 			free(row[j]);
 		}
 		free(row);
+		printf("\t\trest:(\t");
+		for (int l = 0; l < rest_size[i]; l++)
+			print(rest[i][l]);
+		printf(")\n");
 	}
 	free(temp);
 	//UNFINISHED
@@ -272,7 +279,7 @@ void roth_step_2(char*** A, char*** B, int* br, int* fr) {
 		printf("\n\nZuL\t"); print_top(L, L_size);
 		for (int i = 0; i < Z_size; i++)
 			for (int k = 0; k < rest_size[i]; k++) {
-				if (rest[i][k][0] != ' ') {
+				if (rest[i][k][0]) {
 					print(rest[i][k]);
 					for (int j = 0; j < L_size; j++) {
 						char* c = over(rest[i][k], L[j]);
@@ -287,19 +294,23 @@ void roth_step_2(char*** A, char*** B, int* br, int* fr) {
 
 
 		printf("\nThe following simple implicants are included into E:\t");
-		for (int i = 0; i < L_size; i++)
+		for (int i = 0; i < Z_size; i++)
 			if (rest_important[i]) {
 				print(Z[i]);
 				E_size++;
 				E = (char**)realloc(E, E_size * sizeof(char*));
 				E[E_size - 1] = (char*)calloc(size, 1);
-				E[E_size - 1] = strcpyy(E[E_size - 1], Z[i]);
+				E[E_size - 2] = strcpyy(E[E_size - 2], Z[i]);
 			}
 	}
 	else {
-		/*Z = x_sort(Z, Z_size);
-		E[0] = strcpyy(E[0], Z[0]);*/
-		E[0][0] = '1'; E[0][1] = '1'; E[0][2] = '0'; E[0][3] = 'x';
+//		printf("\nZ:\t\n");
+//		arrprint(Z, Z_size);
+		Z = x_sort(Z, Z_size);
+//		printf("\nZ:\t\n");
+//		arrprint(Z, Z_size);
+		E[0] = strcpyy(E[0], Z[0]);
+
 	}
 	char*** C = char3(E_size, L_size);
 	printf("\n\nL#E\t"); print_top(L, L_size);
@@ -338,36 +349,75 @@ void roth_step_2(char*** A, char*** B, int* br, int* fr) {
 		}
 	}
 	printf("\n\n");
-	for (int i = 0; i < E_size; i++)
+	char** Zi = char2(Z_size);
+	int Zi_size = 0;
 		for (int j = 0; j < Z_size; j++)
-			if (strcmpp(E[i], Z[j]))
-				del(Z, &Z_size, j);
-	printf("Z^ :\t"); for (int i = 0; i < Z_size; i++) print(Z[i]); printf("\n");
-	char*** add = char3(L1_size, Z_size);
-	for (int i = 0; i < L1_size; i++)								//table fill-in
-		for (int j = 0; j < Z_size; j++) 
-			add[i][j] = over(L1[i], Z[j]);
+			if (!str_found(Z[j], E, E_size)) {
+				Zi[Zi_size] = strcpyy(Zi[Zi_size], Z[j]);
+				Zi_size++;
+			}
+
+
+		Zi = (char**)realloc(Zi, Zi_size * sizeof(char*));
+		Zi = repeat_check(Zi, &Zi_size);
+		int EE_size = E_size;
+	printf("Z^ :\t"); for (int i = 0; i < Zi_size; i++) print(Zi[i]); printf("\n");
+	char*** add = char3(L1_size, Zi_size);
+	for (int i = 0; i < L1_size; i++) {	
+		int sex = 0; int sexy = 0;									//table fill-in
+		for (int j = 0; j < Zi_size; j++) {
+			add[i][j] = over(L1[i], Zi[j]);
+			if (add[i][j][0]) {
+				sex++;
+				sexy = j;
+			}
+		}
+		if (sex == 1) {
+			EE_size++;
+			E = (char**)realloc(E, EE_size * sizeof(char*));
+			E[EE_size - 1] = (char*)calloc(size, 1);
+			E[EE_size - 2] = strcpyy(E[EE_size - 2], Zi[sexy]);
+		}
+	}
+
+
 	printf("\n\nFinal Table:\n");
 	printf("\nZ^uL1\t");												//table print
-	for (int i = 0; i < Z_size; i++)								//
-		print(Z[i]);												//
+	for (int i = 0; i < Zi_size; i++)								//
+		print(Zi[i]);												//
 	printf("\n\n");													//
 	for (int i = 0; i < L1_size; i++) {								//
 		print(L1[i]);												//
-		for (int j = 0; j < Z_size; j++)							//
+		for (int j = 0; j < Zi_size; j++)							//
 			print(add[i][j]);										//
 		printf("\n");												//
 	}
+	//int* Z_covers = (int*)calloc(Zi_size, sizeof(int));
+	//char* temp = (char*)calloc(size, 1);
+	//for (int i = 0; i < L1_size; i++) {
+	//	for(int j = 0; j < Zi_size; j++)
+	//		if (add[j][i][0] != '\0') 
+	//			if (x_count(add[j][i]) > x_count(temp))
+	//				temp = strcpyy(temp, Zi[j]);
+	//	printf("for "); print(L1[i]); printf("the covering is "); print(temp);
+	//}
+
+
+	E = repeat_check(E, &EE_size);
 	printf("\n\nMinimal DNF is: ");
-	for (int i = 0; i < E_size-1; i++) {
-		for (int j = 0; j < size; j++)
-			printf("%c", E[i][j]);
+	for (int i = 0; i < EE_size-1; i++) {
+		print(E[i]);
 		printf(" + ");
 	}
-	print(E[E_size - 1]);
 	printf("\n\n");
 
 
+	for (int i = 0; i < L1_size; i++) {
+		for (int j = 0; j < Zi_size; j++)
+			free(add[i][j]);
+		free(add[i]);
+	}
+	free(add);
 
 	for (int i = 0; i < E_size; i++) {
 		for (int j = 0; j < L_size; j++)
@@ -381,10 +431,14 @@ void roth_step_2(char*** A, char*** B, int* br, int* fr) {
 		free(rest[i]);
 	}
 	free(rest);
+
+	for (int i = 0; i < Zi_size; i++)
+		free(Zi[i]);
+	free(Zi);
 	for (int i = 0; i < L1_size; i++)
 		free(L1[i]);
 	free(L1);
-	for (int i = 0; i < E_size; i++)
+	for (int i = 0; i < EE_size; i++)
 		free(E[i]);
 	free(E);
 

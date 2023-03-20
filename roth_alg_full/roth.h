@@ -23,6 +23,7 @@ char* raw_sub(char* a, char* b);
 char* z_remove(char* a, char* b);
 char* z_remove_times(char* _Z_remove, char* _origin, int n);
 char* strcpyy(char* a, char* b);
+char* dectobin(char* a);
 char* over(char* a, char* b);
 char* dectobin(char*);
 
@@ -30,12 +31,14 @@ char roth_mult(char a, char b);
 char roth_sub(char a, char b);
 char roth_over(char a, char b);
 
+int str_found(char* a, char** b, int c);
 int strcmpp(char* a, char* b);
 int issame(char* a, char* b);
 int z_count(char* a);
 int num_count(char* a);
 int y_count(char* a);
 
+void prin(char*);
 void print(char*);
 void roth_step_2(char*** L, char*** Z, int* L_size, int* Z_size);
 void table_print(char*** Cnew, char** c, int C_size, int o);

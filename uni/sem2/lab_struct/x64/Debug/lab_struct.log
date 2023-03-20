@@ -1,3 +1,6 @@
-﻿  structs.cpp
+﻿  lab_struct.cpp
 D:\github\250501\uni\sem2\lab_struct\structs.h(10,2): warning C4091: 'typedef ': ignored on left of 'temp' when no variable is declared
+  structs.cpp
+D:\github\250501\uni\sem2\lab_struct\structs.h(10,2): warning C4091: 'typedef ': ignored on left of 'temp' when no variable is declared
+  Generating Code...
   lab_struct.vcxproj -> D:\github\250501\uni\sem2\lab_struct\x64\Debug\lab_struct.exe

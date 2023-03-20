@@ -131,6 +131,7 @@
     <ClCompile Include="structs.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="output.bin" />
     <None Include="structs.bin" />
     <None Include="structs.spp" />
   </ItemGroup>
@@ -139,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
+    <Text Include="output.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

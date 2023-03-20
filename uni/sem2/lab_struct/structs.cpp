@@ -88,48 +88,6 @@ int part_print(temp* a, int n, const char* b, int mode) {
 	return total;
 }
 
-char* getsf() {
-	char* c = (char*)calloc(20, sizeof(char));
-	printf("Input sort parameter\t");
-	fgets(c, 20, stdin);
-	for (int i = 0; i < strlen(c); i++)
-		if (!isalpha(c[i])) {
-			c[i] = '\0';
-			i = 200;
-		}
-	return c;
-}
-
-temp* alloc() {
-	temp* a = (temp*)calloc(1, sizeof(temp));
-	for (int i = 0; i < size; i++) {
-		a[0].data[0][i] = '\0';
-		a[0].data[1][i] = '\0';
-	}
-	return a;
-}
-
-temp* recalloc(temp* a, int n) {
-	a = (temp*)realloc(a, n * sizeof(temp));
-	for (int i = 0; i < size; i++) {
-		a[n-1].data[0][i] = '\0';
-		a[n-1].data[1][i] = '\0';
-	}
-	return a;
-}
-
-temp* fstruct(temp* a, FILE* fptr, int* n){
- int z = *n;
-	for (int i = 0; !feof(fptr); i++) {
-		char* str = (char*)calloc(81, sizeof(char));
-		int j = 0; int k = 0;
-		z++; a = recalloc(a, z);
-		fgets(str, 80, fptr);
-		if (str[0] != ' ') {
-			do {
-				a[i].data[0][k] = str[j];
-				j++; k++;
-			} while (str[j] != ' ');
 
 			k = 0;
 			while (!isalpha(str[j + 1])) j++;

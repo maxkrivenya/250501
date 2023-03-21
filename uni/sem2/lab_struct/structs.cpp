@@ -1,4 +1,4 @@
-#include "structs.h"
+﻿#include "structs.h"
 
 FILE* file(const char* a, const char* b) {
 	FILE* fptr;
@@ -9,7 +9,7 @@ FILE* file(const char* a, const char* b) {
 	}
 	return fptr;
 }
-
+//открытие файла с проверкой
 
 char* getsf() {
 	char* c = (char*)calloc(20, sizeof(char));
@@ -22,31 +22,31 @@ char* getsf() {
 		}
 	return c;
 }
-
+//считывание строки из файла
 
 int getnum() {
 	int a;
 	printf("Input number. ");
 	scanf_s("%d", &a);
 	return a;
-}
-
+} 
+//считывание числа с клавиатуры
 int strcmpp(char* a, const char* b) {
 	int flg = 1;
 	for (int i = 0; i < strlen(b); i++)
 		if (a[i] != b[i])
 			flg = 0;
 	return flg;
-}
-
+}   //сравнение двух строк
+//сравнение двух строк
 
 void prog_end(int* cont) {
 	printf("\nType 0 to continue. ");
 	scanf_s("%d", cont);
 	rewind(stdin);
 
-}
-
+}	
+//проверка окончания программы
 void fileprint(FILE* fptr) {
 	printf("Input data:\n\n");
 	do {
@@ -58,7 +58,7 @@ void fileprint(FILE* fptr) {
 	printf("\n");
 	rewind(fptr);
 }
-
+//вывод файла на экран
 void arrprint(temp* a, int n) {
 	printf("\ngoods\t\tcountry\t\tamt\n\n");
 	for (int i = 0; i < n - 1; i++) {
@@ -72,7 +72,7 @@ void arrprint(temp* a, int n) {
 	}
 	printf("\n");
 }
-
+//вывод массива на экран
 void bout(temp* a, const char* x, int n) {
 	FILE* fptr;
 	fptr = file(x, "w");
@@ -85,7 +85,7 @@ void bout(temp* a, const char* x, int n) {
 	free(a);
 	fclose(fptr);
 }
-
+//запись и чтение массива из бинарного файла
 void binprint(temp* a, int n, FILE* fptr) {
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < 2; j++) {
@@ -98,7 +98,7 @@ void binprint(temp* a, int n, FILE* fptr) {
 		fprintf(fptr, "%d", a[i].amount);
 	}
 }
-
+//запись массива в бинарный файл
 
 temp* alloc() {
 	temp* a = (temp*)calloc(1, sizeof(temp));
@@ -108,7 +108,7 @@ temp* alloc() {
 	}
 	return a;
 }
-
+//выделение памяти под массив структур
 temp* bin_read(int n, FILE* fptr) {
 	temp* a = (temp*)calloc(n, sizeof(temp));
 	for (int i = 0; i < n && !feof(fptr); i++) {
@@ -119,7 +119,7 @@ temp* bin_read(int n, FILE* fptr) {
 	}
 	return a;
 }
-
+//чтение массива структур из бинарного файла
 temp* recalloc(temp* a, int n) {
 	a = (temp*)realloc(a, n * sizeof(temp));
 	for (int i = 0; i < size; i++) {
@@ -128,9 +128,10 @@ temp* recalloc(temp* a, int n) {
 	}
 	return a;
 }
-
-temp* fstruct(temp* a, FILE* fptr, int* n) {
+//перевыделение памяти под массив структур
+temp* fstruct(FILE* fptr, int* n) {
 	int z = *n;
+	temp* a = (temp*)calloc(1, sizeof(temp));
 	for (int i = 0; !feof(fptr); i++) {
 		char* str = (char*)calloc(81, sizeof(char));
 		int j = 0; int k = 0;
@@ -163,10 +164,10 @@ temp* fstruct(temp* a, FILE* fptr, int* n) {
 	*n = z;
 	return a;
 }
-
+//чтение массива структур из текстового файла
 temp* labstep1(temp* a, int n, int* cont, int* a_new_size)
 {
-	int x = *a_new_size; int total = 0;
+	int x = 0; int total = 0;
 
 	const char* c = getsf();
 	printf("Please input 0 for the goods or 1 for the country.\t");
@@ -182,7 +183,7 @@ temp* labstep1(temp* a, int n, int* cont, int* a_new_size)
 	*a_new_size = x;
 	return a_new;
 }
-
+//основная функция программы
 temp* part_print(temp* a, int n, const char* b, int mode, int* x, int* total) {
 	int y = 0; int num = *x; temp* a1 = (temp*)calloc(1, sizeof(temp));
 	printf("\ngoods\t\tcountry\t\tamt\n\n");
@@ -206,3 +207,4 @@ temp* part_print(temp* a, int n, const char* b, int mode, int* x, int* total) {
 	*x = num;
 	return a1;
 }
+//вывод на экран и запись в массив результатов программы

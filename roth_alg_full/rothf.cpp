@@ -21,6 +21,7 @@ char* froth1(char* a, char* b, int* n, int* n2, int* Acount, int* flg){
 			str[i] = 'x';
 		}
 	}
+
 	if (y_num == 1) {
 		flag = 1;
 		*flg = flag;
@@ -34,6 +35,7 @@ char* froth1(char* a, char* b, int* n, int* n2, int* Acount, int* flg){
 			str[i] = ' ';
 		return str;
 	}
+
 	return str;
 }
 
@@ -181,12 +183,6 @@ char** roth_step_1(char** c, int C_size, int* Z_size, int e) {
 	}
 	*Z_size = n;
 
-	//printf("\nSimple Implicants:");
-	//for (int i = 0; i < n; i++) {
-	//	printf("\tZ[%d] - ", i);
-	//	print(Z[i]);
-	//}
-	//printf("\n\n");
 
 	return Z;
 }
@@ -256,6 +252,7 @@ void roth_step_2(char*** A, char*** B, int* br, int* fr) {
 	}
 	free(temp);
 	//UNFINISHED
+
 	for (int i = 0; i < Z_size; i++) {
 		printf("\nrest[%d]:\t", i);
 		for (int j = 0; j < rest_size[i]; j++)
@@ -392,16 +389,6 @@ void roth_step_2(char*** A, char*** B, int* br, int* fr) {
 			print(add[i][j]);										//
 		printf("\n");												//
 	}
-	//int* Z_covers = (int*)calloc(Zi_size, sizeof(int));
-	//char* temp = (char*)calloc(size, 1);
-	//for (int i = 0; i < L1_size; i++) {
-	//	for(int j = 0; j < Zi_size; j++)
-	//		if (add[j][i][0] != '\0') 
-	//			if (x_count(add[j][i]) > x_count(temp))
-	//				temp = strcpyy(temp, Zi[j]);
-	//	printf("for "); print(L1[i]); printf("the covering is "); print(temp);
-	//}
-
 
 	E = repeat_check(E, &EE_size);
 	printf("\n\nMinimal DNF is: ");
@@ -431,7 +418,6 @@ void roth_step_2(char*** A, char*** B, int* br, int* fr) {
 		free(rest[i]);
 	}
 	free(rest);
-
 	for (int i = 0; i < Zi_size; i++)
 		free(Zi[i]);
 	free(Zi);

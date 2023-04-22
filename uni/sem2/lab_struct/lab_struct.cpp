@@ -1,15 +1,21 @@
 ﻿#include "structs.h"
 
 int main() {
-	int cont = 1; int n = 1; temp* a_new = NULL; int a_new_size = 0;
-	FILE* fptr = file("input.txt", "r"); fileprint(fptr);					//открытие файла с проверкой
-	//temp* a = alloc();
-	temp* a = fstruct(fptr, &n);											//чтение массива структур из текстового файла
+	int cont = 1; int n = 1; temp* a_new = NULL; int a_new_size = 0; temp* a = NULL;
+	printf("If wish to input yourself, type 0. ");
+	scanf_s("%d", &cont);
+	if (cont) {
+		FILE* fptr = file("input.txt", "r"); fileprint(fptr);				//открытие файла с проверкой
+		a = fstruct(fptr, &n);												//чтение массива структур из текстового файла
+	}
+	else 
+		a = user_input(&n);												//ввод массива структур с клавиатуры
+
 	do {
-		//a_new_size = 0;
 		a_new = labstep1(a, n, &cont, &a_new_size);							//основная функция программы
-	} while (!cont);
-	bout(a, "structs.bin", n);												//запись и чтение из бинарного файла массива структур
-	free(a_new);
+	} while (!cont);												
+	
+	bout(a_new, "output.bin", a_new_size);								//запись и чтение из бинарного файла массива структур
+	free(a);
 	return 0;
 }

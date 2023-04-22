@@ -1,2 +1,8 @@
-﻿  rothf.cpp
+﻿  not_rot.cpp
+  print.cpp
+  roth_alg_full.cpp
+  roth_base_functions.cpp
+  rothf.cpp
+  Generating Code...
+D:\github\250501\roth_alg_full\roth_base_functions.cpp(37): warning C4715: 'roth_sub': not all control paths return a value
   roth_alg_full.vcxproj -> D:\github\250501\roth_alg_full\x64\Debug\roth_alg_full.exe

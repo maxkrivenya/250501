@@ -1,7 +1,7 @@
 #include"roth.h"
 
 int main() {
-	int L_size = 16;int C_size = 16;
+	int L_size = 16;int C_size = 40;
 	int Z_size = 0; int Zi_size = 0;
 	char** c = char2(C_size); char** L = char2(L_size);
 	FILE* fptr = open_read("input.txt");
@@ -24,7 +24,7 @@ int main() {
 	Z[0] = (char*)calloc(size, 1);
 	Z = merge(Z, Zi, &Z_size, Zi_size);
 
-	printf("\nThere are % d simple implicants : ", Z_size);	arrprint(Z, Z_size);
+ 	printf("\nThere are % d simple implicants : ", Z_size);	arrprint(Z, Z_size);
 	printf("\nStep one finished.\n");
 
 	roth_step_2(&L, &Z, &L_size, &Z_size);

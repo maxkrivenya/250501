@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#define size 5
+#define size 6
 
 FILE* open_read(const char* _FILE_NAME);
 

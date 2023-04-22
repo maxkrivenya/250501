@@ -1,2 +1,25 @@
-﻿  rothf.cpp
-  roth_alg_full.vcxproj -> D:\github\250501\roth_alg_full\x64\Debug\roth_alg_full.exe
+﻿  not_rot.cpp
+  print.cpp
+  rothf.cpp
+E:\github\250501\roth_alg_full\rothf.cpp(213,22): error C2440: '=': cannot convert from 'char' to 'char *'
+E:\github\250501\roth_alg_full\rothf.cpp(213,22): message : Conversion from integral type to pointer type requires reinterpret_cast, C-style cast or parenthesized function-style cast
+E:\github\250501\roth_alg_full\rothf.cpp(257,20): error C2446: '<': no conversion from 'int *' to 'int'
+E:\github\250501\roth_alg_full\rothf.cpp(257,22): message : There is no context in which this conversion is possible
+E:\github\250501\roth_alg_full\rothf.cpp(259,21): error C2440: '=': cannot convert from 'int' to 'char *'
+E:\github\250501\roth_alg_full\rothf.cpp(259,21): message : Conversion from integral type to pointer type requires reinterpret_cast, C-style cast or parenthesized function-style cast
+E:\github\250501\roth_alg_full\rothf.cpp(271,20): error C2446: '<': no conversion from 'int *' to 'int'
+E:\github\250501\roth_alg_full\rothf.cpp(271,22): message : There is no context in which this conversion is possible
+E:\github\250501\roth_alg_full\rothf.cpp(272,18): error C2446: '!=': no conversion from 'int' to 'char *'
+E:\github\250501\roth_alg_full\rothf.cpp(272,21): message : Conversion from integral type to pointer type requires reinterpret_cast, C-style cast or parenthesized function-style cast
+E:\github\250501\roth_alg_full\rothf.cpp(273,4): error C2664: 'void print(char *)': cannot convert argument 1 from 'char **' to 'char *'
+E:\github\250501\roth_alg_full\rothf.cpp(273,16): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
+E:\github\250501\roth_alg_full\roth.h(38,6): message : see declaration of 'print'
+E:\github\250501\roth_alg_full\rothf.cpp(273,4): message : while trying to match the argument list '(char **)'
+E:\github\250501\roth_alg_full\rothf.cpp(275,16): error C2664: 'char *over(char *,char *)': cannot convert argument 1 from 'char **' to 'char *'
+E:\github\250501\roth_alg_full\rothf.cpp(275,27): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
+E:\github\250501\roth_alg_full\roth.h(25,7): message : see declaration of 'over'
+E:\github\250501\roth_alg_full\rothf.cpp(275,16): message : while trying to match the argument list '(char **, char *)'
+  roth_alg_full.cpp
+  roth_base_functions.cpp
+E:\github\250501\roth_alg_full\roth_base_functions.cpp(50,6): error C3861: 'Zcount': identifier not found
+  Generating Code...

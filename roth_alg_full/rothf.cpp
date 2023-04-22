@@ -37,7 +37,7 @@ char* froth1(char* a, char* b, int* n, int* n2, int* Acount, int* flg){
 	return str;
 }
 
-int Zcount(char* a) {
+int z_count(char* a) {
 	int b = 0;
 	for (int i = 0; i < size; i++)
 		if (a[i] == 'Z')
@@ -45,10 +45,18 @@ int Zcount(char* a) {
 	return b;
 }
 
-int numcount(char* a) {
+int num_count(char* a) {
 	int b = 0;
 	for (int i = 0; i < size; i++)
 		if (isdigit(a[i]))
+			b++;
+	return b;
+}
+
+int y_count(char* a) {
+	int b = 0;
+	for (int i = 0; i < size; i++)
+		if ((a[i]) == 'y')
 			b++;
 	return b;
 }
@@ -68,9 +76,12 @@ char* z_remove_times(char* a, char* b, int m) {
 				c--;
 				a[i] = b[i];
 			}
+			else c--;
+		else
+			a[i] = b[i];
 	return a;
 }
-//
+
 //char* froth2(char* a, char* b) {
 //
 //
@@ -154,20 +165,66 @@ void roth_step_2(char** L, char** Z, int L_size, int Z_size) {
 	printf("\nStarted step two.\n");
 	int E_size = 0;
 
-	int rest_size = L_size;
-	char** rest = char2(rest_size);
+	int* rest_size = (int*)calloc(Z_size, sizeof(int));
+	char*** rest = (char***)calloc(Z_size, sizeof(char**));
+
 
 	//UNFINISHED
+	char* temp = (char*)calloc(size, 1);
+	for (int i = 0; i < Z_size; i++) {
+		int n = 1;
+		char** row = char2(n); 
+		row[0] = strcpyy(row[0], Z[i]);
 
-	//for()
+		for (int j = 0; j < Z_size; j++) 
+			if(j != i)
+				for (int k = 0; k < n; k++) {
+					temp = raw_sub(row[k], Z[j]);
+					if (z_count(temp) != size){
 
+						if (!y_count(temp)) {
 
+							int new_n = num_count(temp);
 
+							if (new_n != n) {
+								row = (char**)realloc(row, new_n * sizeof(char*));
+								for (int l = n; l < new_n; l++)
+									row[l] = (char*)calloc(size, 1);
+							}
 
+							for (int l = 0; l < new_n; l++)
+								row[l] = z_remove_times(temp, row[l], l);
 
+							n = new_n;
 
+						}
 
+					}
+					else {
+						for (int l = k; l < n - 1; l++)
+							row[l] = strcpyy(row[l], row[l + 1]);
+						free(row[n - 1]);
+						 n--; k--; 
+						if (!n) {
+							j = Z_size;
+							n = 1;
+							row[0] = (char*)calloc(size,1);
+							for (int l = 0; l < size; l++)
+								rest[i][l] = '\0';
+						}
+					}
 
+				}
+	
+		rest_size[i] = n;
+		rest[i] = char2(n);
+		for (int k = 0; k < n; k++)
+			rest[i][k] = strcpyy(rest[i][k], row[k]);
+
+		for (int j = 0; j < n; j++)
+			free(row[j]);
+		free(row);
+	}
 
 
 

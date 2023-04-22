@@ -31,8 +31,9 @@ char roth_over(char a, char b);
 
 int strcmpp(char* a, char* b);
 int issame(char* a, char* b);
-int Zcount(char* a);
-int numcount(char* a);
+int z_count(char* a);
+int y_count(char* a);
+int num_count(char* a);
 
 void print(char*);
 void roth_step_2(char** L, char** Z, int L_size, int Z_size);

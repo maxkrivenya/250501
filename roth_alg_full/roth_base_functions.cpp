@@ -47,7 +47,7 @@ char* simple_sub(char* x, char* b) {
 	char* a = (char*)calloc(size, 1);
 	for (int i = 0; i < size; i++)
 		a[i] = roth_sub(x[i], b[i]);
-	if (Zcount(a) == size)
+	if (z_count(a) == size)
 		for (int i = 0; i < size; i++)
 			a[i] = '\0';
 	else

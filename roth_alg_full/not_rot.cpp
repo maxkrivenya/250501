@@ -16,8 +16,16 @@ char*** char3(int C_size, int D_size) {
 		Cnew[i] = (char**)calloc(D_size, sizeof(char*));
 	for (int i = 0; i < C_size; i++)
 		for (int j = 0; j < D_size; j++)
-			Cnew[i][j] = (char*)calloc(size, 1);
+			Cnew[i][j] = (char*)calloc(size+1, 1);
 	return Cnew;
+}
+
+
+char** char2(int a) {
+	char** c = (char**)calloc(a, sizeof(char*));
+	for (int i = 0; i < a; i++)
+		c[i] = (char*)calloc(size+1, 1);
+	return c;
 }
 
 char** del(char** a, int* x, int z) {
@@ -28,13 +36,6 @@ char** del(char** a, int* x, int z) {
 	a = (char**)realloc(a, n * sizeof(char*));
 	*x = n;
 	return a;
-}
-
-char** char2(int a) {
-	char** c = (char**)calloc(a, sizeof(char*));
-	for (int i = 0; i < a; i++)
-		c[i] = (char*)calloc(size, 1);
-	return c;
 }
 
 char** repeat_check(char** a, int* x) {
@@ -77,11 +78,32 @@ char** merge(char** a, char** b, int* c, int d) {
 	
 }
 
+
+char* dectobin(char* a) {
+	char* temp = (char*)calloc(size + 1, 1);
+	int dec = atoi(a);
+	int j = size - 1;
+	int bruh = 1;
+	for (int i = 0; i < size; i++) {
+		temp[i] = '0';
+		bruh = 1;
+		for (int k = 0; k < j; k++)
+			bruh *= 2;
+		if (dec - bruh >= 0) {
+			dec -= bruh;
+			temp[i] = '1';
+		}
+		j--;
+	}
+	return temp;
+}
+
 char* strcpyy(char* a, char* b) {
 	for (int i = 0; i < size; i++)
 		a[i] = b[i];
 	return a;
 }
+
 
 int strcmpp(char* a, char* b) {
 	int same = 1;
@@ -89,6 +111,13 @@ int strcmpp(char* a, char* b) {
 		if (a[i] != b[i])
 			same = 0;
 	return same;
+}
+
+int str_found(char* a, char** b, int c) {
+	for (int i = 0; i < c; i++)
+		if (strcmpp(a, b[i]))
+			return 1;
+	return 0;
 }
 
 int issame(char* a, char* b) {

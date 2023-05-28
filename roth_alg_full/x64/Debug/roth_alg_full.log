@@ -1,5 +1,6 @@
 ﻿  not_rot.cpp
   print.cpp
+<<<<<<< HEAD
   rothf.cpp
 E:\github\250501\roth_alg_full\rothf.cpp(213,22): error C2440: '=': cannot convert from 'char' to 'char *'
 E:\github\250501\roth_alg_full\rothf.cpp(213,22): message : Conversion from integral type to pointer type requires reinterpret_cast, C-style cast or parenthesized function-style cast
@@ -23,3 +24,11 @@ E:\github\250501\roth_alg_full\rothf.cpp(275,16): message : while trying to matc
   roth_base_functions.cpp
 E:\github\250501\roth_alg_full\roth_base_functions.cpp(50,6): error C3861: 'Zcount': identifier not found
   Generating Code...
+=======
+  roth_alg_full.cpp
+  roth_base_functions.cpp
+  rothf.cpp
+  Generating Code...
+D:\github\250501\roth_alg_full\roth_base_functions.cpp(37): warning C4715: 'roth_sub': not all control paths return a value
+  roth_alg_full.vcxproj -> D:\github\250501\roth_alg_full\x64\Debug\roth_alg_full.exe
+>>>>>>> bad627e7ad185f82e345dc4a099518e5e6caba14

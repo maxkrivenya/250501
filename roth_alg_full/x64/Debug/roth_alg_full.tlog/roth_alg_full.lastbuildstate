@@ -1,2 +1,6 @@
 PlatformToolSet=v143:VCToolArchitecture=Native64Bit:VCToolsVersion=14.35.32215:TargetPlatformVersion=10.0.19041.0:
+<<<<<<< HEAD
 Debug|x64|E:\github\250501\roth_alg_full\|
+=======
+Debug|x64|D:\github\250501\roth_alg_full\|
+>>>>>>> bad627e7ad185f82e345dc4a099518e5e6caba14

@@ -1,5 +1,10 @@
 #include "roth.h"
 
+void prin(char* c) {
+	for (int i = 0; i < size; i++)
+		printf("%c", c[i]);
+}
+
 void print(char* c) {
 	
 	for (int i = 0; i < size; i++)
